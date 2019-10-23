@@ -1,5 +1,3 @@
-# Attention, this library is not maintained anymore!!!
-
 # active-window
 > Get active window title in Node.js.
 
@@ -18,16 +16,8 @@ callback = function(window){
       console.log(err);
   } 
 }
-/*Watch the active window 
-  @callback
-  @number of requests; infinity = -1 
-  @interval between requests
-*/
-//monitor.getActiveWindow(callback,-1,1);
 
-//Get the current active window
 monitor.getActiveWindow(callback);
-
 
 ```
 ## Tested on
