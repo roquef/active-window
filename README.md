@@ -6,18 +6,12 @@ Compatible with Linux, Windows 7+, and OSX;
 ## Usage
 
 ```javascript
-var monitor = require('active-window');
+const monitor = require('active-window');
 
-callback = function(window){
-  try {
-    console.log("App: " + window.app);
-    console.log("Title: " + window.title);
-  }catch(err) {
-      console.log(err);
-  } 
-}
-
-monitor.getActiveWindow(callback);
+monitor.getActiveWindow((window) => {
+  console.log("App: " + window.app);
+  console.log("Title: " + window.title);
+});
 
 ```
 ## Tested on
