@@ -1,4 +1,4 @@
-# active-window
+# node-active-window
 > Get active window title in Node.js.
 
 Compatible with Linux, Windows 7+, and OSX;
@@ -6,28 +6,22 @@ Compatible with Linux, Windows 7+, and OSX;
 ## Usage
 
 ```javascript
-const monitor = require('active-window');
+const monitor = require('node-active-window');
 
-monitor.getActiveWindow((window) => {
-  console.log("App: " + window.app);
-  console.log("Title: " + window.title);
+monitor.getActiveWindow((err, window) => {
+    if (!err) {
+        console.log(window); // { app: 'Code', title: 'test.js - node-active-window - Visual Studio Code' }
+    }
 });
 
 ```
 ## Tested on
-- Windows
- - Windows 10
- - Windows 7
+- Windows 10
+- Windows 7
 - Linux 
   - Raspbian [lxdm]
   - Debian 8 [cinnamon]
 - OSX
-  - Yosemite 10.10.1
-
-## TODO
-
-- Test on more operating systems.
-- Use native APIs. 
 
 ## License
 

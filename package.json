@@ -1,15 +1,25 @@
 {
-  "name": "active-window",
+  "name": "node-active-window",
   "version": "0.1.0",
   "description": "Get active window title.",
   "main": "index.js",
-  "contributors":[{ "name" : "Jason Stallings "
-                  , "email" : "jason@stallin.gs"
-                  , "url" : ""},
-                  { "name" : "Robson Vieira"
-                  , "email" : "robsonvnasc@gmail.com"
-                  , "url" : ""}
-                ],
+  "contributors": [
+    {
+      "name": "Jason Stallings ",
+      "email": "jason@stallin.gs",
+      "url": ""
+    },
+    {
+      "name": "Robson Vieira",
+      "email": "robsonvnasc@gmail.com",
+      "url": ""
+    },
+    {
+      "name": "Roque",
+      "email": "roquefsd@gmail.com",
+      "url": "https://github.com/roquef"
+    }
+  ],
   "license": "MIT",
   "dependencies": {}
 }

@@ -3,18 +3,6 @@ const configs = require('./configs.json');
 const path = require('path');
 const config = getConfig();
 
-/**
- * This callback handle the response request by getActiveWindow function
- * @callback getActiveWindowCallback
- * @param {app: string, window: string} window
- */
-
-/**
-* Get the active window
-* @param {getActiveWindowCallback} callback - The callback that handles the response.
-* @param {integer} [repeats  = 1] - Number of repeats; Use -1 to infinity repeats
-* @param {float}   [interval = 0] - Loop interval in seconds. For milliseconds use fraction (0.1 = 100ms)
-*/
 exports.getActiveWindow = function (callback, repeats = 1, interval = 0) {
     const spawn = require('child_process').spawn;
 
@@ -27,18 +15,16 @@ exports.getActiveWindow = function (callback, repeats = 1, interval = 0) {
     parameters.push(repeats);
     parameters.push(process.platform == 'win32' ? (interval * 1000 | 0) : interval);
 
-    //Run shell script
     const ls = spawn(config.bin, parameters);
     ls.stdout.setEncoding('utf8');
 
-    //Obtain successful response from script
     ls.stdout.on('data', function (stdout) {
-        callback(reponseTreatment(stdout.toString()));
+        callback(null, reponseTreatment(stdout.toString()));
     });
 
     //Obtain error response from script
     ls.stderr.on("data", function (stderr) {
-        throw stderr.toString();
+        callback(stderr.toString(), null);
     });
 
     ls.stdin.end();
@@ -67,10 +53,6 @@ function reponseTreatment(response) {
     return window;
 }
 
-/**
-* Get script config accordingly the operating system
-* @function getConfig
-*/
 function getConfig() {
     let config;
 
@@ -88,7 +70,7 @@ function getConfig() {
         default:
             throw "Operating System not supported yet. " + process.platform;
     }
-    
+
     //Append directory to script url
     script_url = path.join(__dirname, config.script_url);
     config.parameters.push(script_url);
